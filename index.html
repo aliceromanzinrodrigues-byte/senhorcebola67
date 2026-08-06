@@ -92,33 +92,50 @@
             background-color: #a5d6a7;
             color: #1b5e20;
         }
-        /* Estilos do Botão de Curtida */
-        .like-section {
+        .vote-section {
             margin-top: 25px;
             padding-top: 15px;
             border-top: 1px solid #c8e6c9;
             display: flex;
+            gap: 12px;
             align-items: center;
+            flex-wrap: wrap;
         }
-        .like-btn {
-            background-color: #2e7d32;
-            color: #ffffff;
+        .btn {
             border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 10px 18px;
+            font-size: 0.95rem;
             font-weight: bold;
             border-radius: 20px;
             cursor: pointer;
             transition: background-color 0.2s, transform 0.1s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+        .like-btn {
+            background-color: #2e7d32;
+            color: #ffffff;
         }
         .like-btn:hover {
             background-color: #1b5e20;
         }
-        .like-btn:active {
-            transform: scale(0.95);
+        .dislike-btn {
+            background-color: #c62828;
+            color: #ffffff;
+        }
+        .dislike-btn:hover {
+            background-color: #b71c1c;
+        }
+        .love-btn {
+            background-color: #e91e63;
+            color: #ffffff;
+        }
+        .love-btn:hover {
+            background-color: #c2185b;
         }
         footer {
             text-align: center;
@@ -194,9 +211,15 @@
                     <p><strong>Peçonhenta vs. Não Peçonhenta:</strong> Nem toda cobra é perigosa para o ser humano. As peçonhentas possuem glândulas de veneno e dentes especializados para injetá-lo. As não peçonhentas podem até morder para se defender, mas não injetam toxinas (geralmente caçam usando a força do próprio corpo).</p>
                 </div>
 
-                <div class="like-section">
-                    <button class="like-btn" onclick="curtir()">
-                        ❤️ Curtir (<span id="likeCount">0</span>)
+                <div class="vote-section">
+                    <button class="btn like-btn" onclick="darLike()">
+                        👍 Like (<span id="likeCount">0</span>)
+                    </button>
+                    <button class="btn dislike-btn" onclick="darDislike()">
+                        👎 Deslike (<span id="dislikeCount">0</span>)
+                    </button>
+                    <button class="btn love-btn" onclick="darAmei()">
+                        ❤️ Amei (<span id="loveCount">0</span>)
                     </button>
                 </div>
             </article>
@@ -209,10 +232,23 @@
     </div>
 
     <script>
-        let curtidas = 0;
-        function curtir() {
-            curtidas++;
-            document.getElementById("likeCount").innerText = curtidas;
+        let likes = 0;
+        let dislikes = 0;
+        let loves = 0;
+
+        function darLike() {
+            likes++;
+            document.getElementById("likeCount").innerText = likes;
+        }
+
+        function darDislike() {
+            dislikes++;
+            document.getElementById("dislikeCount").innerText = dislikes;
+        }
+
+        function darAmei() {
+            loves++;
+            document.getElementById("loveCount").innerText = loves;
         }
     </script>
 
