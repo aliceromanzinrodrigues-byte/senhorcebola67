@@ -92,6 +92,34 @@
             background-color: #a5d6a7;
             color: #1b5e20;
         }
+        /* Estilos do Botão de Curtida */
+        .like-section {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #c8e6c9;
+            display: flex;
+            align-items: center;
+        }
+        .like-btn {
+            background-color: #2e7d32;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .like-btn:hover {
+            background-color: #1b5e20;
+        }
+        .like-btn:active {
+            transform: scale(0.95);
+        }
         footer {
             text-align: center;
             padding: 20px;
@@ -165,14 +193,28 @@
 
                     <p><strong>Peçonhenta vs. Não Peçonhenta:</strong> Nem toda cobra é perigosa para o ser humano. As peçonhentas possuem glândulas de veneno e dentes especializados para injetá-lo. As não peçonhentas podem até morder para se defender, mas não injetam toxinas (geralmente caçam usando a força do próprio corpo).</p>
                 </div>
+
+                <div class="like-section">
+                    <button class="like-btn" onclick="curtir()">
+                        ❤️ Curtir (<span id="likeCount">0</span>)
+                    </button>
+                </div>
             </article>
         </main>
 
         <footer>
-            <p contenteditable="true">&copy; Blog das Serpentes - Avery</p>
+            <p contenteditable="true">&copy; Blog das Serpentes - Todos os direitos reservados</p>
         </footer>
 
     </div>
+
+    <script>
+        let curtidas = 0;
+        function curtir() {
+            curtidas++;
+            document.getElementById("likeCount").innerText = curtidas;
+        }
+    </script>
 
 </body>
 </html>
