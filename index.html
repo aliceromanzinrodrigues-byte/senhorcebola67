@@ -1,9 +1,12 @@
+Aqui está o código completo atualizado. A imagem de uma cobra em posição de ataque foi integrada ao topo do artigo, acompanhada das regras de layout em linha (Flexbox) e do alinhamento via `align-self`:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog sobre Serpentes</title>
+    <title>Guia Completo: Cobra-Rei</title>
     <style>
         * {
             box-sizing: border-box;
@@ -12,136 +15,198 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: #e8f5e9;
-            color: #1b5e20;
+            line-height: 1.7;
+            /* Fundo em tons de marrom e amarelo */
+            background-color: #3e2723;
+            color: #fff8e1;
             padding: 20px;
+        }
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
         }
         header {
             text-align: center;
             padding: 40px 20px;
-            background: #ffffff;
-            border-bottom: 3px solid #c8e6c9;
+            background: #fbc02d;
+            color: #3e2723;
+            border-bottom: 4px solid #fff8e1;
             margin-bottom: 30px;
-            border-radius: 8px;
+            border-radius: 12px;
         }
         header h1 {
-            color: #1b5e20;
+            font-size: 2.5rem;
             margin-bottom: 10px;
-            outline: none;
         }
         header p {
-            color: #2e7d32;
-            outline: none;
+            font-size: 1.1rem;
+            font-weight: bold;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .post {
-            background: #ffffff;
+
+        /* --- Estrutura do Card / Article em Linha (Flexbox) --- */
+        article {
+            background: #4e342e;
             padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            border: 2px solid #fbc02d;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            
+            /* Desafio Flexbox: Exibição em linha e ocupando 100% da largura */
+            display: flex;
+            flex-direction: row;
+            flex: 1 1 100%;
+            width: 100%;
+            gap: 25px;
+            flex-wrap: wrap; /* Garante ajuste perfeito em telas menores */
         }
+
+        /* Estilização da Imagem do Artigo */
+        .post-img {
+            width: 320px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #ffee58;
+            
+            /* Desafio Flexbox: align-self para alinhar a imagem no topo */
+            align-self: flex-start;
+        }
+
+        .post-body {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+
         .post-title {
-            font-size: 1.8rem;
-            color: #1b5e20;
-            margin-bottom: 10px;
-            outline: none;
-        }
-        .post-date {
-            font-size: 0.85rem;
-            color: #388e3c;
-            margin-bottom: 20px;
-            outline: none;
-        }
-        .post-content {
-            font-size: 1.05rem;
-            color: #1b5e20;
-            outline: none;
+            font-size: 2rem;
+            color: #ffee58;
+            border-bottom: 2px solid #fbc02d;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
         }
         .post-content h3 {
-            margin-top: 20px;
+            margin-top: 25px;
             margin-bottom: 10px;
-            color: #2e7d32;
+            color: #fbc02d;
+            font-size: 1.4rem;
         }
         .post-content p {
             margin-bottom: 15px;
+            font-size: 1.05rem;
         }
         .post-content ul {
-            margin-left: 20px;
+            margin-left: 25px;
             margin-bottom: 15px;
         }
         .post-content li {
             margin-bottom: 8px;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .highlight-box {
+            background: #fbc02d;
+            color: #3e2723;
+            padding: 20px;
+            border-radius: 8px;
+            font-weight: bold;
             margin: 20px 0;
-            background-color: #f1f8e9;
         }
-        th, td {
-            padding: 12px;
-            border: 1px solid #c8e6c9;
-            text-align: left;
-        }
-        th {
-            background-color: #a5d6a7;
-            color: #1b5e20;
-        }
+
+        /* --- Seção de Votação (Like / Dislike) --- */
         .vote-section {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px solid #c8e6c9;
             display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #fbc02d;
         }
-        .btn {
+        .btn-vote {
+            background: #fbc02d;
+            color: #3e2723;
             border: none;
-            padding: 10px 18px;
-            font-size: 0.95rem;
+            padding: 10px 20px;
+            font-size: 1rem;
             font-weight: bold;
             border-radius: 20px;
             cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
+            transition: transform 0.1s, background 0.2s;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
-        .btn:active {
+        .btn-vote:hover {
+            background: #ffee58;
+        }
+        .btn-vote:active {
             transform: scale(0.95);
         }
-        .like-btn {
-            background-color: #2e7d32;
-            color: #ffffff;
+
+        /* --- Seção de Comentários --- */
+        .comments-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #fbc02d;
+            width: 100%;
         }
-        .like-btn:hover {
-            background-color: #1b5e20;
+        .comments-section h3 {
+            color: #fbc02d;
+            margin-bottom: 15px;
         }
-        .dislike-btn {
-            background-color: #c62828;
-            color: #ffffff;
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
         }
-        .dislike-btn:hover {
-            background-color: #b71c1c;
+        .comment-form input, .comment-form textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #fbc02d;
+            background: #3e2723;
+            color: #fff8e1;
+            font-family: inherit;
+            font-size: 1rem;
         }
-        .love-btn {
-            background-color: #e91e63;
-            color: #ffffff;
+        .comment-form input::placeholder, .comment-form textarea::placeholder {
+            color: #d7ccc8;
         }
-        .love-btn:hover {
-            background-color: #c2185b;
+        .comment-form button {
+            align-self: flex-start;
+            background: #fbc02d;
+            color: #3e2723;
+            border: none;
+            padding: 10px 25px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
         }
+        .comment-form button:hover {
+            background: #ffee58;
+        }
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .comment-item {
+            background: #3e2723;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #fbc02d;
+        }
+        .comment-author {
+            font-weight: bold;
+            color: #ffee58;
+            margin-bottom: 5px;
+        }
+
         footer {
             text-align: center;
-            padding: 20px;
-            color: #2e7d32;
-            font-size: 0.9rem;
+            padding: 25px;
+            color: #ffee58;
+            font-size: 0.95rem;
         }
     </style>
 </head>
@@ -150,83 +215,85 @@
     <div class="container">
 
         <header>
-            <h1 contenteditable="true">Mundo das Serpentes</h1>
-            <p contenteditable="true">Conhecendo e compreendendo a diversidade dos répteis</p>
+            <h1>Guia Completo: A Cobra-Rei</h1>
+            <p>Tudo sobre a maior e mais impressionante serpente peçonhenta do planeta</p>
         </header>
 
         <main>
-            <article class="post">
-                <h2 class="post-title" contenteditable="true">O Fascinante Mundo das Serpentes: Classificação e Famílias</h2>
-                <div class="post-date" contenteditable="true">Publicado em 2026</div>
-                
-                <div class="post-content" contenteditable="true">
-                    <p>As serpentes (ou cobras) são répteis fascinantes e extremamente diversos. Elas estão espalhadas por quase todo o planeta e desempenham um papel fundamental no equilíbrio dos ecossistemas, principalmente no controle de pragas como roedores.</p>
+            <article>
+                <!-- Imagem do post adicionada em linha com o texto -->
+                <img src="https://images.unsplash.com/photo-1531386151447-fd76ad50012f?auto=format&fit=crop&w=800&q=80" alt="Cobra-Rei em posição de ataque" class="post-img">
 
-                    <p>Para entender melhor esse grupo, podemos dividi-las de duas formas principais: pela dentição (como inoculam a peçonha) e pelas famílias/grupos mais conhecidos.</p>
-
-                    <h3>1. Classificação pela Dentição</h3>
-                    <p>A estrutura da boca da serpente define se ela possui peçonha (veneno que consegue injetar) e como ela a utiliza:</p>
-
-                    <ul>
-                        <li><strong>Aglifas:</strong> Não possuem dentes inoculadores de veneno. Seus dentes são todos do mesmo tamanho. A maioria mata suas presas por constrição (apertando).<br><em>Exemplos:</em> Jiboias, sucuris e cobras-verde.</li>
-                        <li><strong>Opistóglifas:</strong> Possuem dentes sulcados localizados na parte traseira da boca. Têm peçonha, mas é difícil para elas injetarem em humanos.<br><em>Exemplos:</em> Muçurana e falsa-jararaca.</li>
-                        <li><strong>Proteróglifas:</strong> Têm dentes fixos na parte frontal da boca, com um sulco por onde passa o veneno.<br><em>Exemplos:</em> Cobras-corais verdadeiras, naja e mamba-negra.</li>
-                        <li><strong>Solenóglifas:</strong> Têm o sistema mais avançado. Seus dentes inoculadores ficam na frente e são retráteis (dobram para trás quando a boca se fecha) e ocos como seringas.<br><em>Exemplos:</em> Jararaca, cascavel e surucucu.</li>
-                    </ul>
-
-                    <h3>2. Principais Tipos e Famílias</h3>
+                <div class="post-body">
+                    <h2 class="post-title">O Aterrorizante e Fascinante Reino da Cobra-Rei</h2>
                     
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Grupo / Família</th>
-                                <th>Características Principais</th>
-                                <th>Exemplos Conhecidos</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Boidae (Boídeos)</strong></td>
-                                <td>Cobras de grande porte, não peçonhentas. Matam presas por constrição.</td>
-                                <td>Jiboia, Sucuri (Anacondas).</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Viperidae (Viperídeos)</strong></td>
-                                <td>Peçonhentas, com dentes solenóglifos e cabeça em formato triangular.</td>
-                                <td>Cascavel, Jararaca, Surucucu.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Elapidae (Elapídeos)</strong></td>
-                                <td>Peçonhentas, com veneno neurotóxico potente e dentes fixos na frente.</td>
-                                <td>Coral-verdadeira, Naja, Mamba-negra.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Colubridae (Colubrídeos)</strong></td>
-                                <td>A maior família. A maioria é inofensiva ou tem veneno fraco para humanos.</td>
-                                <td>Cobra-cipó, Cobra-de-vidro, Muçurana.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="post-content">
+                        <p>A <strong>Cobra-Rei</strong> (<em>Ophiophagus hannah</em>) é amplamente considerada uma das serpentes mais impressionantes e respeitadas do reino animal. Nativa das florestas da Ásia Meridional e do Sudeste Asiático, ela ocupa o topo da cadeia alimentar entre os répteis da região.</p>
 
-                    <p><strong>Peçonhenta vs. Não Peçonhenta:</strong> Nem toda cobra é perigosa para o ser humano. As peçonhentas possuem glândulas de veneno e dentes especializados para injetá-lo. As não peçonhentas podem até morder para se defender, mas não injetam toxinas (geralmente caçam usando a força do próprio corpo).</p>
+                        <h3>1. Características Físicas e Tamanho</h3>
+                        <p>Ela segura o recorde mundial de <strong>maior serpente peçonhenta do mundo</strong>. A maioria dos indivíduos mede entre 3 e 4 metros de comprimento, mas exemplares extraordinários podem ultrapassar os <strong>5,5 metros</strong>.</p>
+                        <ul>
+                            <li><strong>Capelo Característico:</strong> Quando se sente ameaçada, a cobra-rei ergue até um terço do seu corpo do chão e expande a pele do pescoço, criando a famosa postura de intimidação.</li>
+                            <li><strong>Coloração:</strong> Varia entre o verde-oliva, castanho e preto, frequentemente acompanhada de faixas transversais amarelas ou esbranquiçadas ao longo do corpo.</li>
+                        </ul>
+
+                        <h3>2. Alimentação Única (Ofiófaga)</h3>
+                        <p>O nome científico do seu gênero, <em>Ophiophagus</em>, significa literalmente "comedora de serpentes". Ao contrário da grande maioria das cobras, a dieta da cobra-rei consiste quase exclusivamente de <strong>outras serpentes</strong>, incluindo cobras-cipó, jiboias e até mesmo outras espécies peçonhentas como as cobras-verdadeiras (najas) e víboras.</p>
+
+                        <h3>3. Potência do Veneno</h3>
+                        <p>Apesar de o seu veneno não ser o mais tóxico do mundo gota a gota, a cobra-rei compensa isso com a <strong>quantidade maciça de peçonha</strong> que consegue injetar em uma única mordida. Uma dose pode liberar veneno suficiente para derrubar um elefante-asiático adulto ou até 20 pessoas.</p>
+
+                        <h3>4. Comunicação e o "Rugido"</h3>
+                        <p>Ao contrário da maioria das cobras, que emite um assobio agudo quando se sente ameaçada, a cobra-rei emite um som mais grave e profundo, quase parecido com o <strong>rosnado de um cachorro</strong>. Ela consegue esse efeito usando estruturas especiais na sua traqueia para expelir o ar lentamente.</p>
+
+                        <h3>5. Visão e Inteligência Impressionantes</h3>
+                        <p>Ela possui uma excelente visão diurna e consegue detectar movimentos a mais de <strong>100 metros de distância</strong>. Além disso, demonstrando alta capacidade de reconhecimento do ambiente e até de cuidadores em cativeiro, é considerada uma das serpentes mais inteligentes que existem.</p>
+
+                        <div class="highlight-box">
+                            💡 <strong>Cuidado Materno Único:</strong> A cobra-rei é uma das poucas serpentes no mundo que constrói um ninho feito de folhas secas para proteger seus ovos. A fêmea permanece sobre o ninho defendendo os ovos ferozmente até pouco antes da eclosão.
+                        </div>
+
+                        <h3>6. Filhotes Independentes</h3>
+                        <p>Quando os filhotes eclodem dos ovos, eles medem cerca de 45 a 55 cm e possuem uma coloração preta com listras amarelas bem brilhantes. Apesar de pequenos, eles já nascem com <strong>peçonha totalmente funcional e letal</strong>, sendo independentes desde o primeiro instante de vida.</p>
+
+                        <h3>7. Conservação e Status</h3>
+                        <p>Habita florestas densas e manguezais. Apesar de ser um predador de topo, a cobra-rei enfrenta riscos devido ao desmatamento e à caça, sendo classificada como <strong>Vulnerável</strong> pela União Internacional para a Conservação da Natureza (UICN).</p>
+                    </div>
+
+                    <!-- Botões de Votação -->
+                    <div class="vote-section">
+                        <button class="btn-vote" onclick="darLike()">
+                            👍 Curtir (<span id="likeCount">0</span>)
+                        </button>
+                        <button class="btn-vote" onclick="darDislike()">
+                            👎 Não curtir (<span id="dislikeCount">0</span>)
+                        </button>
+                    </div>
                 </div>
 
-                <div class="vote-section">
-                    <button class="btn like-btn" onclick="darLike()">
-                        👍 Like (<span id="likeCount">0</span>)
-                    </button>
-                    <button class="btn dislike-btn" onclick="darDislike()">
-                        👎 Deslike (<span id="dislikeCount">0</span>)
-                    </button>
-                    <button class="btn love-btn" onclick="darAmei()">
-                        ❤️ Amei (<span id="loveCount">0</span>)
-                    </button>
+                <!-- Seção de Comentários (Abaixo do conteúdo principal) -->
+                <div class="comments-section">
+                    <h3>💬 Comentários</h3>
+                    
+                    <div class="comment-form">
+                        <input type="text" id="userName" placeholder="Seu nome...">
+                        <textarea id="userComment" rows="3" placeholder="Escreva seu comentário sobre a cobra-rei..."></textarea>
+                        <button onclick="adicionarComentario()">Enviar Comentário</button>
+                    </div>
+
+                    <div class="comments-list" id="commentsList">
+                        <div class="comment-item">
+                            <div class="comment-author">Biólogo Curioso</div>
+                            <div>Incrível saber que ela rosna e que cuida dos ovos em ninhos! Artigo sensacional!</div>
+                        </div>
+                    </div>
                 </div>
+
             </article>
         </main>
 
         <footer>
-            <p contenteditable="true">&copy; Blog das Serpentes - Todos os direitos reservados</p>
+            <p>&copy; Blog das Serpentes - Edição Especial Cobra-Rei</p>
         </footer>
 
     </div>
@@ -234,7 +301,6 @@
     <script>
         let likes = 0;
         let dislikes = 0;
-        let loves = 0;
 
         function darLike() {
             likes++;
@@ -246,11 +312,40 @@
             document.getElementById("dislikeCount").innerText = dislikes;
         }
 
-        function darAmei() {
-            loves++;
-            document.getElementById("loveCount").innerText = loves;
+        function adicionarComentario() {
+            const nameInput = document.getElementById("userName");
+            const commentInput = document.getElementById("userComment");
+            const commentsList = document.getElementById("commentsList");
+
+            const name = nameInput.value.trim();
+            const comment = commentInput.value.trim();
+
+            if (name === "" || comment === "") {
+                alert("Por favor, preencha o seu nome e o comentário!");
+                return;
+            }
+
+            const commentItem = document.createElement("div");
+            commentItem.className = "comment-item";
+            
+            const authorDiv = document.createElement("div");
+            authorDiv.className = "comment-author";
+            authorDiv.innerText = name;
+
+            const textDiv = document.createElement("div");
+            textDiv.innerText = comment;
+
+            commentItem.appendChild(authorDiv);
+            commentItem.appendChild(textDiv);
+
+            commentsList.prepend(commentItem);
+
+            nameInput.value = "";
+            commentInput.value = "";
         }
     </script>
 
 </body>
 </html>
+
+```
